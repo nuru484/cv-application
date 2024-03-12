@@ -1,17 +1,18 @@
-const EducationalExperience = () => {
+const EducationalExperience = ({ handleSubmit }) => {
   return (
     <div>
-      <form action="#">
-        <label htmlFor="school-name">School Name:</label>
-        <input type="text" id="school-name" name="school-name" />
+      <form action="#" onSubmit={handleSubmit}>
+        <label htmlFor="schoolName">School Name:</label>
+        <input type="text" id="schoolName" name="schoolName" />
 
-        <label htmlFor="title-of-study">Title of Study</label>
-        <input type="text" id="title-of-study" name="title-of-study" />
+        <label htmlFor="titleOfStudy">Title of Study</label>
+        <input type="text" id="titleOfStudy" name="titleOfStudy" />
 
-        <label htmlFor="date-of-study">Date of Study</label>
-        <input type="date" id="date-of-study" name="date-of-study" />
+        <label htmlFor="dateOfStudy">Date of Study</label>
+        <input type="date" id="dateOfStudy" name="dateOfStudy" />
 
-        <button>Submit</button>
+        <button type="submit">Submit</button>
+        <button>Edit</button>
       </form>
     </div>
   );

@@ -1,33 +1,15 @@
-import React, { useState } from 'react';
-
-const GeneralInformation = () => {
-  const [name, setName] = useState('');
-
-  const handleNameChange = (event) => {
-    setName(event.target.value);
-  };
-
+const GeneralInformation = ({ handleSubmit }) => {
   return (
-    <div>
-      <form action="#">
-        <label htmlFor="fullName">Full Name:</label>
-        <input
-          type="text"
-          id="fullName"
-          name="fullName"
-          value={name}
-          onChange={handleNameChange}
-        />
+    <form onSubmit={handleSubmit}>
+      <input type="text" name="fullName" placeholder="Full Name" />
 
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" name="email" />
+      <input type="email" name="email" placeholder="Email" />
 
-        <label htmlFor="phone-number">Phone Number</label>
-        <input type="tel" id="phone-number" name="phone-number" />
+      <input type="tel" name="phoneNumber" placeholder="Phone Number" />
 
-        <button>Submit</button>
-      </form>
-    </div>
+      <button type="submit">Submit</button>
+      <button>Edit</button>
+    </form>
   );
 };
 

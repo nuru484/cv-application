@@ -1,27 +1,33 @@
-const PracticalExperience = () => {
+const PracticalExperience = ({ handleSubmit }) => {
   return (
     <div>
-      <form action="#">
-        <label htmlFor="company-name">Company Name:</label>
-        <input type="text" id="company-name" name="company-name" />
-
-        <label htmlFor="position-title">Position Title:</label>
-        <input type="text" id="position-title" name="position-title" />
-
-        <label htmlFor="main-responsibility">Main Responsibility:</label>
+      <form action="#" onSubmit={handleSubmit}>
         <input
           type="text"
-          id="main-responsibility"
-          name="main-responsibility"
+          id="companyName"
+          name="companyName"
+          placeholder="Company Name"
         />
 
-        <label htmlFor="from-date">From:</label>
-        <input type="date" id="from-date" name="from-date" />
+        <input
+          type="text"
+          id="positionTitle"
+          name="positionTitle"
+          placeholder="Position Title"
+        />
 
-        <label htmlFor="to-date">To: </label>
-        <input type="date" id="date-of-study" name="date-of-study" />
+        <input
+          type="text"
+          id="mainResponsibility"
+          name="mainResponsibility"
+          placeholder="Main Responsibility"
+        />
 
-        <button>Submit</button>
+        <input type="date" id="fromDate" name="fromDate" placeholder="From" />
+
+        <input type="date" id="toDate" name="toDate" placeholder="To Date" />
+
+        <button type="submit">Submit</button>
       </form>
     </div>
   );
