@@ -23,11 +23,17 @@ const PracticalExperience = ({ handleSubmit }) => {
           placeholder="Main Responsibility"
         />
 
-        <input type="date" id="fromDate" name="fromDate" placeholder="From" />
+        <input
+          type="date"
+          id="fromDate"
+          name="fromDate"
+          placeholder="From Date"
+        />
 
         <input type="date" id="toDate" name="toDate" placeholder="To Date" />
 
         <button type="submit">Submit</button>
+        <button>Edit</button>
       </form>
     </div>
   );

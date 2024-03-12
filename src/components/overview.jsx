@@ -16,6 +16,14 @@ const Overview = () => {
     dateOfStudy: '',
   });
 
+  const [practicalExperience, setPracticalExperience] = useState({
+    companyName: '',
+    positionTitle: '',
+    mainResponsibility: '',
+    fromDate: '',
+    toDate: '',
+  });
+
   const handleSubmitForGeneralInfo = (e) => {
     e.preventDefault();
 
@@ -48,8 +56,21 @@ const Overview = () => {
 
   const handleSubmitForPracticalEx = (e) => {
     e.preventDefault();
-    console.log('hello wolrd2');
+
+    const formData = new FormData(e.target);
+
+    const updatedPracticalExperience = {
+      ...practicalExperience,
+      companyName: formData.get('companyName'),
+      positionTitle: formData.get('positionTitle'),
+      mainResponsibility: formData.get('mainResponsibility'),
+      fromDate: formData.get('fromDate'),
+      toDate: formData.get('toDate'),
+    };
+
+    setPracticalExperience(updatedPracticalExperience);
   };
+
   return (
     <div>
       <GeneralInformation handleSubmit={handleSubmitForGeneralInfo} />
@@ -78,9 +99,20 @@ const Overview = () => {
         </div>
 
         <div className="practicalExperience">
-          <p className="cvCompanyName">Company Name:</p>
-          <p className="cvPositionTitle">Position Title:</p>
-          <p className="cvMainResponsibility">Main Responsiblity:</p>
+          <p className="cvCompanyName">
+            Company Name:{practicalExperience.companyName}
+          </p>
+          <p className="cvPositionTitle">
+            Position Title:{practicalExperience.positionTitle}
+          </p>
+          <p className="cvMainResponsibility">
+            Main Responsiblity:{practicalExperience.mainResponsibility}
+          </p>
+
+          <p className="cvFromDate">
+            From Date: {practicalExperience.fromDate}
+          </p>
+          <p className="cvToDate">To Date: {practicalExperience.toDate}</p>
         </div>
       </div>
     </div>
