@@ -1,15 +1,34 @@
 import { useState } from 'react';
 
-const PracticalExperience = ({ handleSubmit }) => {
-  const [isFormVisible, setIsFormVisible] = useState(true);
+const PracticalExperience = () => {
+  const [practicalExperience, setPracticalExperience] = useState({
+    companyName: '',
+    positionTitle: '',
+    mainResponsibility: '',
+    fromDate: '',
+    toDate: '',
+  });
 
-  const handleEditClick = () => {
-    setIsFormVisible(!isFormVisible);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.target);
+
+    const updatedPracticalExperience = {
+      ...practicalExperience,
+      companyName: formData.get('companyName'),
+      positionTitle: formData.get('positionTitle'),
+      mainResponsibility: formData.get('mainResponsibility'),
+      fromDate: formData.get('fromDate'),
+      toDate: formData.get('toDate'),
+    };
+
+    setPracticalExperience(updatedPracticalExperience);
   };
 
   return (
     <div>
-      {isFormVisible && (
+      {
         <form action="#" onSubmit={handleSubmit}>
           <input
             type="text"
@@ -43,9 +62,17 @@ const PracticalExperience = ({ handleSubmit }) => {
 
           <button type="submit">Submit</button>
         </form>
-      )}
+      }
 
-      <button onClick={handleEditClick}>Edit</button>
+      <div className="practicalExperience">
+        <p className="cvCompanyName">
+          Company Name: {practicalExperience.companyName}
+        </p>
+        <p className="cvPositionTitle">Position Title:</p>
+        <p className="cvMainResponsibility">Main Responsiblity:</p>
+        <p className="cvFromDate">From Date: </p>
+        <p className="cvToDate">To Date: </p>
+      </div>
     </div>
   );
 };

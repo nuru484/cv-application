@@ -1,6 +1,6 @@
-const GeneralInformation = ({ handleSubmit }) => {
+const GeneralInformation = () => {
   return (
-    <form onSubmit={handleSubmit}>
+    <form>
       <input type="text" name="fullName" placeholder="Full Name" />
 
       <input type="email" name="email" placeholder="Email" />
