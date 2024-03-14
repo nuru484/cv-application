@@ -72,10 +72,12 @@ const Overview = () => {
   };
 
   return (
-    <div>
-      <GeneralInformation handleSubmit={handleSubmitForGeneralInfo} />
-      <EducationalExperience handleSubmit={handleSubmitForEducationalEx} />
-      <PracticalExperience handleSubmit={handleSubmitForPracticalEx} />
+    <div className="main-container">
+      <div className="formInputs">
+        <GeneralInformation handleSubmit={handleSubmitForGeneralInfo} />
+        <EducationalExperience handleSubmit={handleSubmitForEducationalEx} />
+        <PracticalExperience handleSubmit={handleSubmitForPracticalEx} />
+      </div>
 
       <div className="cv-view">
         <div className="general-information">
