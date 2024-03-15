@@ -2,17 +2,27 @@ const EducationalExperience = ({ handleSubmit }) => {
   return (
     <div>
       <form action="#" onSubmit={handleSubmit}>
-        <label htmlFor="schoolName">School Name:</label>
-        <input type="text" id="schoolName" name="schoolName" />
+        <input
+          type="text"
+          id="schoolName"
+          name="schoolName"
+          placeholder="Schoo Name"
+        />
 
-        <label htmlFor="titleOfStudy">Title of Study</label>
-        <input type="text" id="titleOfStudy" name="titleOfStudy" />
+        <input
+          type="text"
+          id="titleOfStudy"
+          name="titleOfStudy"
+          placeholder="Title of Study"
+        />
 
-        <label htmlFor="dateOfStudy">Date of Study</label>
-        <input type="date" id="dateOfStudy" name="dateOfStudy" />
+        <label htmlFor="dateOfStudyFrom">From</label>
+        <input type="date" id="dateOfStudyFrom" name="dateOfStudyFrom" />
+
+        <label htmlFor="dateOfStudyTo">To</label>
+        <input type="date" id="dateOfStudyTo" name="dateOfStudyTo" />
 
         <button type="submit">Submit</button>
-        <button>Edit</button>
       </form>
     </div>
   );
