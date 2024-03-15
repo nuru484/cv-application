@@ -25,7 +25,6 @@ const Overview = () => {
     };
 
     setGeneralInfo(updatedGeneralInf);
-    setShowGeneralInfo(false);
   };
 
   const handleShowGeneralInfo = () => {
@@ -55,7 +54,6 @@ const Overview = () => {
     };
 
     setEducationalEx(updatedEducationalEx);
-    setShowEducationalEx(false);
   };
 
   const handleShowEducationalEx = () => {
@@ -87,7 +85,6 @@ const Overview = () => {
     };
 
     setPracticalEx(updatedPracticalEx);
-    setShowPracticalEx(false);
   };
 
   const handleShowPracticalEx = () => {
@@ -98,19 +95,34 @@ const Overview = () => {
     <div className="appClass">
       <div className="forms">
         {showGeneralInfo ? (
-          <GeneralInformation handleSubmit={handleSubmitForGeneralInfo} />
+          <GeneralInformation
+            handleSubmit={handleSubmitForGeneralInfo}
+            hideGeneralInfo={() => {
+              setShowGeneralInfo(false);
+            }}
+          />
         ) : (
-          <div onClick={handleShowGeneralInfo}>General Information</div>
+          <div onClick={handleShowGeneralInfo}>General Information </div>
         )}
 
         {showEducationalEx ? (
-          <EducationalExperience handleSubmit={handleSubmitForEducationalEx} />
+          <EducationalExperience
+            handleSubmit={handleSubmitForEducationalEx}
+            hideEducationalEx={() => {
+              setShowEducationalEx(false);
+            }}
+          />
         ) : (
-          <div onClick={handleShowEducationalEx}>Educational Experience</div>
+          <div onClick={handleShowEducationalEx}>Educational Experience </div>
         )}
 
         {showPracticalEx ? (
-          <PracticalExperience handleSubmit={handleSubmitForPracticalEx} />
+          <PracticalExperience
+            handleSubmit={handleSubmitForPracticalEx}
+            hidePracticalEx={() => {
+              setShowPracticalEx(false);
+            }}
+          />
         ) : (
           <div onClick={handleShowPracticalEx}>Practical Experience</div>
         )}

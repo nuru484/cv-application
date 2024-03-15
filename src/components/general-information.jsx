@@ -1,6 +1,7 @@
-const GeneralInformation = ({ handleSubmit }) => {
+const GeneralInformation = ({ handleSubmit, hideGeneralInfo }) => {
   return (
     <form action="#" onSubmit={handleSubmit}>
+      <legend onClick={hideGeneralInfo}>General Information</legend>
       <input type="text" name="fullName" placeholder="Full Name" />
 
       <input type="email" name="email" placeholder="Email" />

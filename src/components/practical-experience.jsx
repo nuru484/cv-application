@@ -1,7 +1,8 @@
-const PracticalExperience = ({ handleSubmit }) => {
+const PracticalExperience = ({ handleSubmit, hidePracticalEx }) => {
   return (
     <div>
       <form action="#" onSubmit={handleSubmit}>
+        <legend onClick={hidePracticalEx}>Practical Experience</legend>
         <input
           type="text"
           id="companyName"
