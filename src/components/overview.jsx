@@ -130,19 +130,22 @@ const Overview = () => {
 
       <div className="cvDisplay">
         <section className="generalInfo">
+          <h2>General Information</h2>
           <p>{generalInfo.fullName} </p>
           <p> {generalInfo.email}</p>
           <p>{generalInfo.phone}</p>
         </section>
 
         <section className="educationalEx">
+          <h2>Educational Experience</h2>
           <p>{educationalEx.schoolName}</p>
           <p>{educationalEx.titleOfStudy}</p>
-          <p>{educationalEx.dateOfStudyFrom}</p>
+          <p> {educationalEx.dateOfStudyFrom}</p>
           <p>{educationalEx.dateOfStudyTo}</p>
         </section>
 
         <section className="practicalEx">
+          <h2>Practical Experience</h2>
           <p>{practicalEx.companyName}</p>
           <p>{practicalEx.positionTitle}</p>
           <p>{practicalEx.mainResponsibility}</p>
