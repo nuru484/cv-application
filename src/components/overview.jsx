@@ -1,157 +1,35 @@
+import { useState } from 'react';
 import GeneralInformation from './general-information';
 import EducationalExperience from './educational-experience';
 import PracticalExperience from './practical-experience';
-import { useState } from 'react';
 
 const Overview = () => {
-  const [generalInfo, setGeneralInfo] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-  });
+  const [educationalEx, setEducationalEx] = useState([{ id: 1 }]);
 
-  const [showGeneralInfo, setShowGeneralInfo] = useState(false);
-
-  const handleSubmitForGeneralInfo = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const updatedGeneralInf = {
-      ...generalInfo,
-      fullName: formData.get('fullName'),
-      email: formData.get('email'),
-      phone: formData.get('phone'),
-    };
-
-    setGeneralInfo(updatedGeneralInf);
-  };
-
-  const handleShowGeneralInfo = () => {
-    setShowGeneralInfo(true);
-  };
-
-  const [educationalEx, setEducationalEx] = useState({
-    schoolName: '',
-    titleOfStudy: '',
-    dateOfStudyFrom: '',
-    dateOfStudyTo: '',
-  });
-
-  const [showEducationalEx, setShowEducationalEx] = useState(false);
-
-  const handleSubmitForEducationalEx = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const updatedEducationalEx = {
-      ...educationalEx,
-      schoolName: formData.get('schoolName'),
-      titleOfStudy: formData.get('titleOfStudy'),
-      dateOfStudyFrom: formData.get('dateOfStudyFrom'),
-      dateOfStudyTo: formData.get('dateOfStudyTo'),
-    };
-
+  const handleEducationalEx = () => {
+    const nextId = educationalEx.length + 1;
+    const updatedEducationalEx = [...educationalEx, { id: nextId }];
     setEducationalEx(updatedEducationalEx);
   };
 
-  const handleShowEducationalEx = () => {
-    setShowEducationalEx(true);
-  };
-
-  const [practicalEx, setPracticalEx] = useState({
-    companyName: '',
-    positionTitle: '',
-    mainResponsibility: '',
-    experienceFrom: '',
-    experienceTo: '',
-  });
-
-  const [showPracticalEx, setShowPracticalEx] = useState(false);
-
-  const handleSubmitForPracticalEx = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(e.target);
-
-    const updatedPracticalEx = {
-      ...practicalEx,
-      companyName: formData.get('companyName'),
-      positionTitle: formData.get('positionTitle'),
-      mainResponsibility: formData.get('mainResponsibility'),
-      experienceFrom: formData.get('experienceFrom'),
-      experienceTo: formData.get('experienceTo'),
-    };
-
-    setPracticalEx(updatedPracticalEx);
-  };
-
-  const handleShowPracticalEx = () => {
-    setShowPracticalEx(true);
-  };
-
   return (
-    <div className="appClass">
-      <div className="forms">
-        {showGeneralInfo ? (
-          <GeneralInformation
-            handleSubmit={handleSubmitForGeneralInfo}
-            hideGeneralInfo={() => {
-              setShowGeneralInfo(false);
-            }}
-          />
-        ) : (
-          <div onClick={handleShowGeneralInfo}>General Information </div>
-        )}
-
-        {showEducationalEx ? (
-          <EducationalExperience
-            handleSubmit={handleSubmitForEducationalEx}
-            hideEducationalEx={() => {
-              setShowEducationalEx(false);
-            }}
-          />
-        ) : (
-          <div onClick={handleShowEducationalEx}>Educational Experience </div>
-        )}
-
-        {showPracticalEx ? (
-          <PracticalExperience
-            handleSubmit={handleSubmitForPracticalEx}
-            hidePracticalEx={() => {
-              setShowPracticalEx(false);
-            }}
-          />
-        ) : (
-          <div onClick={handleShowPracticalEx}>Practical Experience</div>
-        )}
+    <div className="app">
+      <div>
+        <GeneralInformation />
       </div>
-
-      <div className="cvDisplay">
-        <section className="generalInfo">
-          <h2>General Information</h2>
-          <p>{generalInfo.fullName} </p>
-          <p> {generalInfo.email}</p>
-          <p>{generalInfo.phone}</p>
-        </section>
-
-        <section className="educationalEx">
-          <h2>Educational Experience</h2>
-          <p>{educationalEx.schoolName}</p>
-          <p>{educationalEx.titleOfStudy}</p>
-          <p> {educationalEx.dateOfStudyFrom}</p>
-          <p>{educationalEx.dateOfStudyTo}</p>
-        </section>
-
-        <section className="practicalEx">
-          <h2>Practical Experience</h2>
-          <p>{practicalEx.companyName}</p>
-          <p>{practicalEx.positionTitle}</p>
-          <p>{practicalEx.mainResponsibility}</p>
-          <p>{practicalEx.experienceFrom}</p>
-          <p>{practicalEx.experienceTo}</p>
-        </section>
+      <div>
+        <h2>Educational Experience</h2>
+        <button onClick={handleEducationalEx}>
+          Add Educational Experience
+        </button>
+        {educationalEx.map((experience) => (
+          <EducationalExperience key={experience.id} />
+        ))}
+      </div>
+      <div>
+        <h2>Practical Experience</h2>
+        <button>Add Practical Experience</button>
+        <PracticalExperience />
       </div>
     </div>
   );
