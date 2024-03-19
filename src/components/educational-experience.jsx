@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const EducationalExperience = () => {
+const EducationalExperience = ({ handleDelete }) => {
   const [educationalEx, setEducationalEx] = useState({
     schoolName: '',
     titleOfStudy: '',
@@ -14,7 +14,6 @@ const EducationalExperience = () => {
     const formData = new FormData(e.target);
 
     const updatedEducationalEx = {
-      ...educationalEx,
       schoolName: formData.get('schoolName'),
       titleOfStudy: formData.get('titleOfStudy'),
       dateOfStudyFrom: formData.get('dateOfStudyFrom'),
@@ -53,6 +52,7 @@ const EducationalExperience = () => {
           <input type="date" id="dateOfStudyTo" name="dateOfStudyTo" />
 
           <button type="submit">Submit</button>
+          <button onClick={handleDelete}>Delete</button>
         </form>
       ) : (
         <section className="educationalEx">
@@ -74,6 +74,7 @@ const EducationalExperience = () => {
           >
             Edit Educational Experience
           </button>
+          <button onClick={handleDelete}>Delete</button>
         </section>
       )}
     </div>

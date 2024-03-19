@@ -12,6 +12,11 @@ const Overview = () => {
     setEducationalEx(updatedEducationalEx);
   };
 
+  const deleteEduEx = (id) => {
+    const updatedEducationalEx = educationalEx.filter((item) => item.id !== id);
+    setEducationalEx(updatedEducationalEx);
+  };
+
   return (
     <div className="app">
       <div>
@@ -23,7 +28,10 @@ const Overview = () => {
           Add Educational Experience
         </button>
         {educationalEx.map((experience) => (
-          <EducationalExperience key={experience.id} />
+          <EducationalExperience
+            key={experience.id}
+            handleDelete={() => deleteEduEx(experience.id)}
+          />
         ))}
       </div>
       <div>

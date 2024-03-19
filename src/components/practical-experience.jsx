@@ -15,7 +15,6 @@ const PracticalExperience = () => {
     const formData = new FormData(e.target);
 
     const updatedPracticalEx = {
-      ...practicalEx,
       companyName: formData.get('companyName'),
       positionTitle: formData.get('positionTitle'),
       mainResponsibility: formData.get('mainResponsibility'),

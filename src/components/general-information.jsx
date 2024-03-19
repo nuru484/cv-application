@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const GeneralInformation = () => {
   const [generalInfo, setGeneralInfo] = useState({
-    fullName: 'Nurudeen',
+    fullName: '',
     email: '',
     phone: '',
   });
@@ -13,7 +13,6 @@ const GeneralInformation = () => {
     const formData = new FormData(e.target);
 
     const updatedGeneralInf = {
-      ...generalInfo,
       fullName: formData.get('fullName'),
       email: formData.get('email'),
       phone: formData.get('phone'),
@@ -35,12 +34,23 @@ const GeneralInformation = () => {
             type="text"
             name="fullName"
             placeholder="Full Name"
+            defaultValue={generalInfo.fullName}
             id="fullName"
           />
 
-          <input type="email" name="email" placeholder="Email" />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            defaultValue={generalInfo.email}
+          />
 
-          <input type="tel" name="phone" placeholder="Phone Number" />
+          <input
+            type="tel"
+            name="phone"
+            placeholder="Phone Number"
+            defaultValue={generalInfo.phone}
+          />
 
           <button type="submit">Submit</button>
         </form>
