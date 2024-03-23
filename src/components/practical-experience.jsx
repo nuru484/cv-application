@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const PracticalExperience = () => {
+const PracticalExperience = ({ handleDelete }) => {
   const [practicalEx, setPracticalEx] = useState({
     companyName: '',
     positionTitle: '',
@@ -26,7 +26,30 @@ const PracticalExperience = () => {
     setShowForm(false);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setPracticalEx((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const [showForm, setShowForm] = useState(true);
+
+  const {
+    companyName,
+    positionTitle,
+    mainResponsibility,
+    experienceFrom,
+    experienceTo,
+  } = practicalEx;
+
+  const isFormValid =
+    companyName &&
+    positionTitle &&
+    mainResponsibility &&
+    experienceFrom &&
+    experienceTo;
 
   return (
     <div>
@@ -38,6 +61,9 @@ const PracticalExperience = () => {
             id="companyName"
             name="companyName"
             placeholder="Company Name"
+            value={companyName}
+            onChange={handleInputChange}
+            required
           />
 
           <input
@@ -45,6 +71,9 @@ const PracticalExperience = () => {
             id="positionTitle"
             name="positionTitle"
             placeholder="Position Title"
+            value={positionTitle}
+            onChange={handleInputChange}
+            required
           />
 
           <input
@@ -52,23 +81,33 @@ const PracticalExperience = () => {
             id="mainResponsibility"
             name="mainResponsibility"
             placeholder="Main Responsibility"
+            value={mainResponsibility}
+            onChange={handleInputChange}
+            required
           />
 
           <input
             type="date"
             id="experienceFrom"
             name="experienceFrom"
-            placeholder="From Date"
+            value={experienceFrom}
+            onChange={handleInputChange}
+            required
           />
 
           <input
             type="date"
             id="experienceTo"
             name="experienceTo"
-            placeholder="To Date"
+            value={experienceTo}
+            onChange={handleInputChange}
+            required
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={!isFormValid}>
+            Submit
+          </button>
+          <button onClick={handleDelete}>Delete</button>
         </form>
       ) : (
         <section className="practicalEx">

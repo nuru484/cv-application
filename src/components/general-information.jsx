@@ -12,7 +12,7 @@ const GeneralInformation = () => {
 
     const formData = new FormData(e.target);
 
-    const updatedGeneralInf = {
+    const updatedGeneralInfo = {
       fullName: formData.get('fullName'),
       email: formData.get('email'),
       phone: formData.get('phone'),
@@ -20,10 +20,22 @@ const GeneralInformation = () => {
 
     setShowForm(false);
 
-    setGeneralInfo(updatedGeneralInf);
+    setGeneralInfo(updatedGeneralInfo);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setGeneralInfo((prevInfo) => ({
+      ...prevInfo,
+      [name]: value,
+    }));
   };
 
   const [showForm, setShowForm] = useState(true);
+
+  const { fullName, email, phone } = generalInfo;
+
+  const isFormValid = fullName && email && phone;
 
   return (
     <div>
@@ -34,25 +46,32 @@ const GeneralInformation = () => {
             type="text"
             name="fullName"
             placeholder="Full Name"
-            defaultValue={generalInfo.fullName}
-            id="fullName"
+            value={fullName}
+            onChange={handleInputChange}
+            required
           />
 
           <input
             type="email"
             name="email"
             placeholder="Email"
-            defaultValue={generalInfo.email}
+            value={email}
+            onChange={handleInputChange}
+            required
           />
 
           <input
             type="tel"
             name="phone"
             placeholder="Phone Number"
-            defaultValue={generalInfo.phone}
+            value={phone}
+            onChange={handleInputChange}
+            required
           />
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={!isFormValid}>
+            Submit
+          </button>
         </form>
       ) : (
         <section className="generalInfo">

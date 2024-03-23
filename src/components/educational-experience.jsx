@@ -24,7 +24,21 @@ const EducationalExperience = ({ handleDelete }) => {
     setShowForm(false);
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setEducationalEx((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
   const [showForm, setShowForm] = useState(true);
+
+  const { schoolName, titleOfStudy, dateOfStudyFrom, dateOfStudyTo } =
+    educationalEx;
+
+  const isFormValid =
+    schoolName && titleOfStudy && dateOfStudyFrom && dateOfStudyTo;
 
   return (
     <div>
@@ -35,7 +49,10 @@ const EducationalExperience = ({ handleDelete }) => {
             type="text"
             id="schoolName"
             name="schoolName"
-            placeholder="Schoo Name"
+            placeholder="School Name"
+            value={schoolName}
+            onChange={handleInputChange}
+            required
           />
 
           <input
@@ -43,15 +60,34 @@ const EducationalExperience = ({ handleDelete }) => {
             id="titleOfStudy"
             name="titleOfStudy"
             placeholder="Title of Study"
+            value={titleOfStudy}
+            onChange={handleInputChange}
+            required
           />
 
           <label htmlFor="dateOfStudyFrom">From</label>
-          <input type="date" id="dateOfStudyFrom" name="dateOfStudyFrom" />
+          <input
+            type="date"
+            id="dateOfStudyFrom"
+            name="dateOfStudyFrom"
+            value={dateOfStudyFrom}
+            onChange={handleInputChange}
+            required
+          />
 
           <label htmlFor="dateOfStudyTo">To</label>
-          <input type="date" id="dateOfStudyTo" name="dateOfStudyTo" />
+          <input
+            type="date"
+            id="dateOfStudyTo"
+            name="dateOfStudyTo"
+            value={dateOfStudyTo}
+            onChange={handleInputChange}
+            required
+          />
 
-          <button type="submit">Submit</button>
+          <button type="submit" disabled={!isFormValid}>
+            Submit
+          </button>
           <button onClick={handleDelete}>Delete</button>
         </form>
       ) : (
@@ -74,7 +110,6 @@ const EducationalExperience = ({ handleDelete }) => {
           >
             Edit Educational Experience
           </button>
-          <button onClick={handleDelete}>Delete</button>
         </section>
       )}
     </div>

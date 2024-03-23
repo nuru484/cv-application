@@ -1,13 +1,17 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import GeneralInformation from './general-information';
 import EducationalExperience from './educational-experience';
 import PracticalExperience from './practical-experience';
 
 const Overview = () => {
   const [educationalEx, setEducationalEx] = useState([{ id: 1 }]);
+  const [practicalExperiences, setPracticalExperiences] = useState([{ id: 1 }]);
 
   const handleEducationalEx = () => {
-    const nextId = educationalEx.length + 1;
+    const nextId =
+      educationalEx.length > 0
+        ? educationalEx[educationalEx.length - 1].id + 1
+        : 1;
     const updatedEducationalEx = [...educationalEx, { id: nextId }];
     setEducationalEx(updatedEducationalEx);
   };
@@ -15,6 +19,22 @@ const Overview = () => {
   const deleteEduEx = (id) => {
     const updatedEducationalEx = educationalEx.filter((item) => item.id !== id);
     setEducationalEx(updatedEducationalEx);
+  };
+
+  const handleAddPracticalExperience = () => {
+    const nextId = practicalExperiences.length + 1;
+    const updatedPracticalExperiences = [
+      ...practicalExperiences,
+      { id: nextId },
+    ];
+    setPracticalExperiences(updatedPracticalExperiences);
+  };
+
+  const deletePracticalExperience = (id) => {
+    const updatedPracticalExperiences = practicalExperiences.filter(
+      (item) => item.id !== id
+    );
+    setPracticalExperiences(updatedPracticalExperiences);
   };
 
   return (
@@ -36,8 +56,15 @@ const Overview = () => {
       </div>
       <div>
         <h2>Practical Experience</h2>
-        <button>Add Practical Experience</button>
-        <PracticalExperience />
+        <button onClick={handleAddPracticalExperience}>
+          Add Practical Experience
+        </button>
+        {practicalExperiences.map((experience) => (
+          <PracticalExperience
+            key={experience.id}
+            handleDelete={() => deletePracticalExperience(experience.id)}
+          />
+        ))}
       </div>
     </div>
   );
