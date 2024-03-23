@@ -42,9 +42,9 @@ const Overview = () => {
       <div>
         <GeneralInformation />
       </div>
-      <div>
+      <div className="educationalExperience">
         <h2>Educational Experience</h2>
-        <button onClick={handleEducationalEx}>
+        <button className="addEduExBtn" onClick={handleEducationalEx}>
           Add Educational Experience
         </button>
         {educationalEx.map((experience) => (
@@ -54,9 +54,12 @@ const Overview = () => {
           />
         ))}
       </div>
-      <div>
+      <div className="practicalExperience">
         <h2>Practical Experience</h2>
-        <button onClick={handleAddPracticalExperience}>
+        <button
+          className="addPracticalExBtn"
+          onClick={handleAddPracticalExperience}
+        >
           Add Practical Experience
         </button>
         {practicalExperiences.map((experience) => (

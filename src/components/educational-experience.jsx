@@ -88,7 +88,9 @@ const EducationalExperience = ({ handleDelete }) => {
           <button type="submit" disabled={!isFormValid}>
             Submit
           </button>
-          <button onClick={handleDelete}>Delete</button>
+          <button className="deleteEduExBtn" onClick={handleDelete}>
+            Delete
+          </button>
         </form>
       ) : (
         <section className="educationalEx">

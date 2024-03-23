@@ -107,7 +107,9 @@ const PracticalExperience = ({ handleDelete }) => {
           <button type="submit" disabled={!isFormValid}>
             Submit
           </button>
-          <button onClick={handleDelete}>Delete</button>
+          <button className="deletePracticalExBtn" onClick={handleDelete}>
+            Delete
+          </button>
         </form>
       ) : (
         <section className="practicalEx">

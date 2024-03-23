@@ -49,12 +49,24 @@ button:hover {
   background-color: #0056b3;
 }
 
-button.edit-btn {
+.addEduExBtn,
+.addPracticalExBtn {
   background-color: #28a745;
 }
 
-button.delete-btn {
+.addEduExBtn:hover,
+.addPracticalExBtn:hover {
+  background-color: #156f2a;
+}
+
+.deleteEduExBtn,
+.deletePracticalExBtn {
   background-color: #dc3545;
+}
+
+.deleteEduExBtn:hover,
+.deletePracticalExBtn:hover {
+  background-color: #ac1927;
 }
 
 label {
@@ -63,17 +75,6 @@ label {
 
 section + section {
   margin-top: 20px;
-}
-
-.form-buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-.cv-layout {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
 }
 
 .generalInfo p {
@@ -95,6 +96,7 @@ section + section {
   margin-bottom: 5px;
 }
 
-.edit-btn {
-  margin-top: 10px;
+.educationalExperience,
+.practicalExperience {
+  border-top: 2px solid black;
 }
